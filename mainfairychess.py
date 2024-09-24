@@ -1,5 +1,4 @@
 import random
-random.seed(int)
 import copy
 from IPython.display import display, Image
 # i need copy so i can copy the piece rules from the piece index and use it to change the rule a bit and then copy it into
@@ -155,4 +154,4 @@ for i in range (6,8):
         print(board[i][g].n)
 
 
-# display(Image(filename='path/to/image.jpg'))
+display(Image(filename='chessboard.png'))
