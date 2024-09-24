@@ -1,6 +1,6 @@
 import random
 import copy
-from IPython.display import display, Image
+from PIL import Image
 # i need copy so i can copy the piece rules from the piece index and use it to change the rule a bit and then copy it into
 # into the board place where it is supposed to go.
 
@@ -31,6 +31,14 @@ class Cpiece:
         self.w = isWhite
         self.n = name
 # Cpiece is combined piece
+
+class Wpiece: 
+    def __init__(self, name, isWhite, Leaps):
+        self.n = name
+        self.w = isWhite
+
+# make a new class of real pieces on the board. make their square x and y 2 of the attributes.
+        
 
 # riderChance probably wont work yet cuz i havent tested lol
 def riderChance(piece):
@@ -98,13 +106,11 @@ rIndexLength = len(RoyalIndex)
 totalLength = cIndexLength + nIndexLength
 # starts the game. 
 rand = 0
-
-
-
+# defines rand
 
 def startup():
     for i in range(0,2):
-        for g in range (0,8):
+        for g in range (0,8): # 16 cells- each a random piece
             rand = random.randrange(0,totalLength,1)
             if rand > nIndexLength:
                 rand = rand - nIndexLength -1    # so it is in range 
@@ -138,10 +144,10 @@ startup()
 rand = random.randrange(0,rIndexLength,1)
 bk = copy.deepcopy(RoyalIndex[rand])
 bk.w = False
-board[0][5] = copy.deepcopy(bk)
+board[0][4] = copy.deepcopy(bk)
 wk = copy.deepcopy(bk)
 wk.w = True
-board[7][5] = copy.deepcopy(wk)
+board[7][4] = copy.deepcopy(wk)
 
 # prints the board
 for i in range (0,2):
@@ -153,5 +159,5 @@ for i in range (6,8):
         print ("("+str(i)+","+str(g)+")")
         print(board[i][g].n)
 
-
-display(Image(filename='chessboard.png'))
+image = Image.open('chessboard.png')
+image.show()
